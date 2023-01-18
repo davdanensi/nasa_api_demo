@@ -56,8 +56,8 @@ $(function () {
             },
             success: function (data) {
                 $('#submit').text('Submit');
-                if (data.error_message) {
-                    alert(data.error_message);
+                if (data.data.error_message) {
+                    alert(data.data.error_message);
                     return;
                 }
                 $('#chartComponent').removeClass('d-none');
@@ -76,7 +76,7 @@ $(function () {
             },
             error: function (error) {
                 $('#submit').text('Submit');
-                alert(error.error_message);
+                alert(error.data.error_message);
             }
         });
     });

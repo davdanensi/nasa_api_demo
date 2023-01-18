@@ -19,6 +19,9 @@ class AsteroidController extends Controller
         $url = $this->api_url . '&start_date=' . $request->startDate . '&end_date=' . $request->endDate;
         $output = $this->callAPI('GET', $url, false);
         $response = json_decode($output, true);
+        if (isset($response['error_message'])) {
+            return ['data' => $response];
+        }
         $result = $this->asteroidResult($response);
         return ['data' => $response, 'result' => $result];
     }
